@@ -1,0 +1,4 @@
+paquetes:
+  - curl
+  - nmap
+  - htop

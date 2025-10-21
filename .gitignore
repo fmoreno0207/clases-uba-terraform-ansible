@@ -1,0 +1,14 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+*.tfvars
+terraform.tfstate.d/
+.terraform/
+.terraform.lock.hcl
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db

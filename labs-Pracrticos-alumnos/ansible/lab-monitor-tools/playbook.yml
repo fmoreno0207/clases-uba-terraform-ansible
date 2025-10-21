@@ -1,0 +1,27 @@
+---
+- name: Instalar utilitarios de sistema y configurar mensajes
+  hosts: web
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Instalar lista de paquetes
+      apt:
+        name: "{{ paquetes }}"
+        state: present
+        update_cache: yes
+
+    - name: Configurar mensaje en /etc/motd
+      copy:
+        content: "{{ motd_message }}\n"
+        dest: /etc/motd
+
+    - name: Crear archivo de log con fecha y hora de ejecución
+      command: date
+      register: fecha_ejecucion
+
+    - name: Guardar log en /var/log/ansible-lab.log
+      copy:
+        content: "Última ejecución: {{ fecha_ejecucion.stdout }}\n"
+        dest: /var/log/ansible-lab.log

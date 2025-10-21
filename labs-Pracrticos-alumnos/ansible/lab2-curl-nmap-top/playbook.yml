@@ -1,0 +1,17 @@
+---
+- name: Instalar utilitarios de red y sistema
+  hosts: web
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Instalar lista de paquetes
+      apt:
+        name: "{{ paquetes }}"
+        state: present
+        update_cache: yes
+
+    - name: Mensaje final
+      debug:
+        msg: "Se instalaron los paquetes: {{ paquetes | join(', ') }}"

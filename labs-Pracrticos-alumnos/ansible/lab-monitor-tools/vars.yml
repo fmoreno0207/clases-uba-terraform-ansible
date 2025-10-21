@@ -1,0 +1,6 @@
+paquetes:
+  - tree
+  - net-tools
+  - sysstat
+
+motd_message: "Este servidor está bajo control de Ansible"
