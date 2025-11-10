@@ -6,9 +6,9 @@
 
 ##Crea el archivo terraform.tfvars
 con lossiguietnes datos:
-pm_api_url           = "https://10.41.116.138:8006/api2/json"
-pm_api_token_id      = "terraform@pam!terraform" 
-pm_api_token_secret  = "37494dfb-ea1f-41XXXXXXXXXXX"
+- pm_api_url           = "https://10.41.116.138:8006/api2/json"
+- pm_api_token_id      = "terraform@pam!terraform" 
+- pm_api_token_secret  = "37494dfb-ea1f-41XXXXXXXXXXX"
 
 ##Como ejecutar:
 - terraform init
