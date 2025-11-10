@@ -1,7 +1,7 @@
-output "container_id" {
-  value = proxmox_lxc.debian_container.vmid
+output "name" {
+  value = proxmox_lxc.basic.*.hostname  
 }
 
-output "container_ip" {
-  value = proxmox_lxc.debian_container.network[0].ip
+output "id" { 
+  value = proxmox_lxc.basic.*.id
 }

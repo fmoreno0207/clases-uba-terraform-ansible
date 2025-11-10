@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "my_vm" {
   count = var.count_vms
-  name        = "vm-debian12-demo-terraform"
+  name        = "vm-debian12-demo-terraform ${count.index + 1}"
   target_node = "pve"
 
   network {

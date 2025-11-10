@@ -62,7 +62,7 @@ provider "proxmox" {
 resource "proxmox_lxc" "basic" {
   count        = var.cantidad
   target_node  = "pve"
-  hostname     = "lxc-basic"
+  hostname     = "lxc-debian12-demo-terraform-${count.index + 1}"
   ostemplate   = "local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst"
   password     = "terraform123"
   unprivileged = true

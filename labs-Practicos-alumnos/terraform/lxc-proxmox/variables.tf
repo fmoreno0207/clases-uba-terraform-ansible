@@ -29,5 +29,5 @@ variable "hostname" {
 variable "cantidad" {
   description = "Cantidad de contenedores LXC a crear"
   type        = number
-  default     = 1
+  default     = 2
 }
