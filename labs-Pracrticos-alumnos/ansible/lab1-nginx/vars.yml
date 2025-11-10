@@ -1,2 +1,0 @@
-index_content: "<h1>Hola desde {{ inventory_hostname }}</h1>"
-index_path: "/var/www/html/index.html"

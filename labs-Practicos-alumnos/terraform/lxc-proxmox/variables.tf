@@ -25,3 +25,9 @@ variable "hostname" {
   type        = string
   default     = "debian12-demo"
 }
+ 
+variable "cantidad" {
+  description = "Cantidad de contenedores LXC a crear"
+  type        = number
+  default     = 2
+}
