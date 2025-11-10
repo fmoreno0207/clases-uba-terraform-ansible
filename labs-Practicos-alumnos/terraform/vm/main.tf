@@ -1,28 +1,37 @@
-resource "proxmox_vm_qemu" "debian_vm" {
-  name        = var.hostname
-  target_node = var.pm_node
-  vmid        = 0
-  onboot      = true
-  agent       = 1
-  kvm         = false
-  cpu         = "qemu64"
-
-  memory = var.vm_memory
-  cores  = var.vm_cores
-
-  boot     = "cdn"
-  bootdisk = "scsi0"
-  iso      = var.iso_image
-
-  disk {
-    storage  = var.storage
-    size     = var.disk_size
-    type     = "scsi"
-    iothread = 1
-  }
+resource "proxmox_vm_qemu" "my_vm" {
+  count = var.count_vms
+  name        = "vm-debian12-demo-terraform"
+  target_node = "pve"
 
   network {
-    model  = "virtio"
-    bridge = var.bridge
+      id = 0
+      bridge    = "vmbr0"
+      firewall  = false
+      link_down = false
+      model     = "e1000"
+  }
+  cpu {
+    cores = 2
+  }
+
+  memory = 2048
+
+  disks {
+    scsi {
+      scsi0 {
+        disk {
+          storage = "local-lvm"
+          size    = "20G"
+        }
+      }
+    }
+
+    ide {
+      ide2 {
+        cdrom {
+          iso = "local:iso/debian-12.10.0-amd64-netinst.iso"
+        }
+      }
+    }
   }
 }
