@@ -1,0 +1,30 @@
+---
+- name: Instalar y configurar servidor web NGINX
+  hosts: web
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Actualizar índices de paquetes APT
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600  # evita actualizaciones innecesarias por 1h
+
+    - name: Instalar Nginx
+      apt:
+        name: nginx
+        state: present
+        force_apt_get: yes
+
+    - name: Copiar archivo index.html
+      copy:
+        content: "{{ index_content }}"
+        dest: "{{ index_path }}"
+        mode: '0644'
+
+    - name: Asegurar que Nginx está iniciado y habilitado
+      service:
+        name: nginx
+        state: started
+        enabled: true
