@@ -4,3 +4,8 @@ Requisistos
 - Tener un CT template (/Datacenter/pve/local(pve))
 - Tener una ISO Image para la VM en (/Datacenter/pve/local(pve))
 
+Como ejecutar:
+
+terraform init
+terraform plan
+terraform apply
